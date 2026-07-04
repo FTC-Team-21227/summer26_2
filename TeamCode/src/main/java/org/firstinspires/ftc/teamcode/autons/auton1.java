@@ -25,7 +25,7 @@ public class auton1 extends OpMode {
     private PathState pathState; // State manager instance
 
     // Define poses here: x, y, and heading values
-    private final Pose startPose = new Pose(144-128.3959, 113.0594+0.8, Math.toRadians(90)); // Start Pose of our robot.
+    private final Pose startPose = new Pose(15, 100, Math.toRadians(90)); // Start Pose of our robot.
     private final Pose scorePose = new Pose(56, 89, Math.toRadians(135)); // Scoring Pose of our robot. It is facing the goal at a 135 degree angle.
 
     // Declare paths
@@ -43,8 +43,8 @@ public class auton1 extends OpMode {
                 .setConstantHeadingInterpolation(scorePose.getHeading())
                 .build();
 
-        scorePickup1 = new Path(new BezierLine(pickup1Pose, scorePose));
-        scorePickup1.setLinearHeadingInterpolation(pickup1Pose.getHeading(),scorePose.getHeading());
+        scorePickup1 = new Path(new BezierLine(scorePose, scorePose));
+        scorePickup1.setLinearHeadingInterpolation(startPose.getHeading(),scorePose.getHeading());
     }
 
     // Method to update paths in loop while auton is running
@@ -57,7 +57,7 @@ public class auton1 extends OpMode {
                 break;
             case STATE_2:
                 if (!follower.isBusy()) { // Checks if the previous path is finished
-                    setPathState(PathState.SCORINGPRELOAD); //every time set path state is called, pathtimer is reset
+                    setPathState(PathState.STATE_1); //every time set path state is called, pathtimer is reset
                 }
                 break;
         }
