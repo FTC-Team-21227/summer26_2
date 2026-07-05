@@ -8,8 +8,8 @@ public class clawTestGrace extends OpMode {
     Servo rightClawServo;
     @Override
     public void init() {
-        leftClawServo = hardwareMap.get(Servo.class, "leftClaw");
-        rightClawServo = hardwareMap.get(Servo.class, "rightClaw");
+        leftClawServo = hardwareMap.get(Servo.class, "servoL");
+        rightClawServo = hardwareMap.get(Servo.class, "servoR");
 
         leftClawServo.setDirection(Servo.Direction.FORWARD);
         rightClawServo.setDirection(Servo.Direction.FORWARD);
